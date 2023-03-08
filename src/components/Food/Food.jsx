@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { data } from '../../Data/Data.js';
 import SingleFood from './SingleFood.jsx';
  
-function Food() {
+function Food({ favorites, setFavorites, cart, setCart }) {
     const[foods, setFoods] = useState(data);
     const[filter, setFilter] = useState('all');
 
@@ -40,8 +40,9 @@ function Food() {
                         className={filter == 'all' ? activeButtonStyle : buttonStyle}
                     >All</button>
 
-                    {typeFilterElements.map((item) => (
+                    {typeFilterElements.map((item, index) => (
                         <button
+                            key={index}
                             onClick={() => { filterType(item.toLowerCase()); setFilter(item.toLowerCase()) }} 
                             className={filter == item.toLowerCase() ? activeButtonStyle : buttonStyle}
                         >{item}</button>
@@ -52,8 +53,9 @@ function Food() {
             <div className='mt-1'>
                 <p className='font-gold text-gray-700 ml-2'>Filter Price</p>
                 <div className='flex justify-between flex-wrap max-w-[390px] w-full'>
-                    {priceFilterElements.map((item) => (
+                    {priceFilterElements.map((item, index) => (
                         <button
+                            key={index}
                             onClick={() => { filterPrice(item); setFilter(item) }} 
                             className={filter == item ? activeButtonStyle : buttonStyle}
                         >{item}</button>
@@ -64,7 +66,13 @@ function Food() {
 
 
         {/* grid */}
-        <SingleFood foods={foods} />
+        <SingleFood 
+            foods={foods} 
+            favorites={favorites}
+            setFavorites={setFavorites}
+            cart={cart}
+            setCart={setCart}
+        />
     </div>
   )
 }

@@ -3,10 +3,7 @@ import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
 import SideMenu from './SideMenu';
 
-function Navbar() {
-  const[nav, setNav] = useState(false);
-  const[delivery, setDelivery] = useState(true);
-
+function Navbar({ nav, setNav, delivery, setDelivery, setCartOpen, setFaoritesOpen, setInviteOpen, setHelpOpen }) {
   return (
     <div className=' fixed w-full max-w-[1640] mx-auto flex justify-between items-center p-4 bg-white z-10 shadow-xl'>
       {/* left side */}
@@ -34,7 +31,7 @@ function Navbar() {
 
       {/* cart button */}
       <div className='hidden bg-black text-white md:flex items-center py-2 px-3 rounded-full cursor-pointer'>
-        <BsFillCartFill size={20} className='mr-2' /> Cart
+        <BsFillCartFill size={20} className='mr-2' onClick={() => setCartOpen(true)}/> Cart
       </div>
 
 
@@ -46,6 +43,12 @@ function Navbar() {
       <SideMenu 
         nav={nav}
         setNav={setNav}
+        setCartOpen={setCartOpen}
+        setFaoritesOpen={setFaoritesOpen}
+        delivery={delivery}
+        setDelivery={setDelivery}
+        setInviteOpen={setInviteOpen}
+        setHelpOpen={setHelpOpen}
       />
     </div>
   )
