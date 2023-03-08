@@ -16,9 +16,9 @@ function Favorites({ favorites, setFavorites, favoritesOpen, setFaoritesOpen }) 
             </div>
             <div className='mt-5 overflow-hidden h-80 overflow-y-scroll'>
                 {favorites.length ? 
-                    favorites.map((item) => {
+                    favorites.map((item, index) => {
                         return (
-                            <div className='flex items-center justify-between mt-2 pr-2'>
+                            <div className='flex items-center justify-between mt-2 pr-2' key={index}>
                                 <div className='flex items-center'>
                                     <img className='h-[2.5rem] w-[2.5rem] md:h-[3rem] md:w-[3rem] object-cover rounded-full' src={item.image} alt=""/>
                                     <p className='ml-2 text-sm md:text-lg'>{item.name}</p>
