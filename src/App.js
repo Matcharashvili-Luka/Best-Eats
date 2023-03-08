@@ -40,7 +40,6 @@ function App() {
       />
       <Hero />
       <Cards />
-      <button onClick={() => cart.map((item) => console.log(item.name))}>Hello</button>
       <Food 
         favorites={favorites}
         setFavorites={setFavorites}
